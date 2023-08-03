@@ -259,4 +259,5 @@ echo  $student [$x]['total'];
     <?php endforeach; ?>
 </table>
 
+<!-- Array Functions -->
 
