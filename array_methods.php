@@ -33,6 +33,7 @@ print_r ($number);
 echo "<br>";
 $alph = range('a','f');
 print_r($alph);
+echo "<br><br><br><br>";
 ?>
 
 <?php
@@ -43,4 +44,5 @@ echo next($people) . "<br>"; // The next element of Peter is Joe
 echo current($people) . "<br>"; // Now the current element is Joe
 echo prev($people) . "<br>"; // The previous element of Joe is Peter
 echo reset($people) . "<br>"; // Moves the internal pointer to the first element of the array, which is Peter
+echo current($people);
 ?>
