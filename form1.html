@@ -1,84 +1,100 @@
-<form name="myform" action="form1.php" method="post">
-    <!-- Name -->
-    <label for="Name">Name</label>
-    <input type="text" id="name" name="name" placeholder="Name">
-    <br>
-    <small id="nameerror"></small>
-    <br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        small{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form name="myform" action="form1.php" method="post">
+        <!-- Name -->
+        <label for="Name">Name</label>
+        <input type="text" id="name" name="name"  placeholder="Name">
+        <br>
+        <small name="nameerror">  </small>
+        <br><br>
+    
+        <!-- Email -->
+        <label for="Email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email">
+        <br>
+        <small name="emailerror"></small>
+        <br><br>
+    
+    
+        <!-- Password -->
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="********">
+        <br>
+        <small name="passworderror"></small>
+        <br><br>
+    
+    
+        <!-- DOB -->
+        <label for="DOB">DOB</label>
+        <input type="date" id="date" name="date" placeholder="dd/mm/yyyy">
+        <br>
+        <small name="dateerror"></small>
+        <br><br>
+    
+        <!-- Gender -->
+    
+        <!-- Male -->
+        <label for="Gender" class="form-label">Gender</label><br><br>
+        <input type="radio" id="male" name="gender" required value="Male">
+        <label for="Male">Male</label>
+        <br>
+        <!-- female -->
+        <input type="radio" id="female" name="gender" required value="Female">
+        <label for="female">Female</label>
+        <br>
+        <small name="gendererror"></small>
+        <br><br>
+    
+    
+        <!-- Select Country -->
+        <label for="country">Country</label>
+        <select id="country" name="country" required>
+            <option value="">Select a country</option>
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <option value="uk">UK</option>
+        </select>
+        <br>
+        <small name="country_error"></small>
+        <br><br><br>
+    
+    
+        <!-- Skills -->
+        <label for="Skills" id="Skill1">Skills</label>
+        <br>
+        <label>
+            <input type="checkbox" name="skills[]" value="HTML">
+            HTML
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" name="skills[]" value="CSS">
+            CSS
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" name="skills[]" value="JavaScript">
+            JavaScript
+        </label>
+        <br> 
+    
+    
+    
+        <!-- Submit Button -->
+        <button type="submit" name="submit">Submit</button>
+    
+    </form>
+</body>
+</html>
 
-    <!-- Email -->
-    <label for="Email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Email">
-    <br>
-    <small id="emailerror"></small>
-    <br><br>
-
-
-    <!-- Password -->
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" placeholder="********">
-    <br>
-    <small id="passworderror"></small>
-    <br><br>
-
-
-    <!-- DOB -->
-    <label for="DOB">DOB</label>
-    <input type="date" id="date" name="date" placeholder="dd/mm/yyyy">
-    <br>
-    <small id="dateerror"></small>
-    <br><br>
-
-    <!-- Gender -->
-
-    <!-- Male -->
-    <label for="Gender" class="form-label">Gender</label><br><br>
-    <input type="radio" id="male" name="gender" required value="Male">
-    <label for="Male">Male</label>
-    <br>
-    <!-- female -->
-    <input type="radio" id="female" name="gender" required value="Female">
-    <label for="female">Female</label>
-    <br>
-    <small id="gendererror"></small>
-    <br><br>
-
-
-    <!-- Select Country -->
-    <label for="country">Country</label>
-    <select id="country" name="country" required>
-        <option value="">Select a country</option>
-        <option value="usa">USA</option>
-        <option value="canada">Canada</option>
-        <option value="uk">UK</option>
-    </select>
-    <br>
-    <small id="country_error"></small>
-    <br><br><br>
-
-
-    <!-- Skills -->
-    <label for="Skills" id="Skill1">Skills</label>
-    <br>
-    <label>
-        <input type="checkbox" name="skills[]" value="HTML">
-        HTML
-    </label>
-    <br>
-    <label>
-        <input type="checkbox" name="skills[]" value="CSS">
-        CSS
-    </label>
-    <br>
-    <label>
-        <input type="checkbox" name="skills[]" value="JavaScript">
-        JavaScript
-    </label>
-    <br>
-
-
-
-    <!-- Submit Button -->
-    <button type="submit" name="submit">Submit</button>
-
-</form>
