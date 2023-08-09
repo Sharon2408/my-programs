@@ -59,7 +59,8 @@ echo "<br><br><br>";
 <!--8 substr_count() -->
 <?php
 echo "substr_count()";
-echo substr_count("Hello world. The world is nice","world");
+$st="Hello world. The world is nice";
+echo substr_count($st,"world");
 echo "<br><br><br>";
 ?>
 
