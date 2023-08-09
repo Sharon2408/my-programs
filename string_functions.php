@@ -2,7 +2,7 @@
 <?php
 echo "Wordwrap()";
 $str = "An example of a long word is: Supercalifragulistic";
-echo wordwrap($str,1,"<br>",false);
+echo wordwrap($str,3,"<br>",false);
 echo "<br><br><br>";
 ?>
 
@@ -40,7 +40,7 @@ echo "<br><br><br>";
 
 <!--6 ltrim() -->
 <?php
-echo "rtrim()";
+echo "ltrim()";
 $str = "Hello World!";
 echo $str . "<br>";
 echo ltrim($str,"Hed!");
@@ -68,14 +68,15 @@ echo "<br><br><br>";
 <?php
 echo "substr()";
 echo substr("Hello world",6);
+echo substr("Hello world",6,3);
 echo "<br><br><br>";
 ?>
 
 <!--10 metaphone()  -->
 <?php
 echo "metaphone()";
-$str = "Assistance";
-$str2 = "Assistants";
+$str = "Principle";
+$str2 = "Principal";
 
 echo metaphone($str);
 echo "<br>";
