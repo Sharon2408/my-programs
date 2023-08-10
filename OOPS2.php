@@ -60,5 +60,88 @@ $obj->display();
 ?>
 
 <?php
+class Persons
+{
+    public $person_name;
+    public $person_dob;
+    public $gender;
+    public $address;
+    public $contact_no;
 
+    function __construct($name,$dob,$gender,$address,$Cno){
+        $this->person_name = $name;
+        $this->person_dob = $dob;
+        $this->gender = $gender;
+        $this->address = $address;
+        $this->contact_no = $Cno;
+    }
+
+    function accept(){}
+    function display(){} 
+}
+
+class Student extends Persons
+{
+
+public $roll_no;
+public $grade;
+public $mark_1;
+public $mark_2;
+public $mark_3;
+public $total;
+public $average;
+public $result;
+
+function __construct($name,$dob,$gender,$address,$Cno,$roll_no,$m1,$m2,$m3)
+{
+   parent::__construct($name,$dob,$gender,$address,$Cno); 
+   $this->roll_no = $roll_no;
+   $this->mark_1 = $m1;
+   $this->mark_2 = $m2;
+   $this->mark_3 = $m3;
+    
+}
+
+function accept(){
+    if(($this->mark_1 || $this->mark_2 || $this->mark_3) < 40){
+        $this->total = $this->mark_1+$this->mark_2+$this->mark_3;
+        $this->average = $this->total/3;
+        $this->grade = 'BAD';
+        $this->result = 'Fail';
+    }
+    else 
+    {
+      
+        $this->total = $this->mark_1+$this->mark_2+$this->mark_3;
+        $this->average = $this->total/3;
+        $this->grade = 'GOOD';
+        $this->result = 'Pass';
+        
+    }
+}
+
+function display(){
+
+    echo "Student Name :".$this->person_name."<br>";
+    echo "Student Roll Number :".$this->roll_no."<br>";
+    echo "Student DOB :".$this->person_dob."<br>";
+    echo "Student Gender :".$this->gender."<br>";
+    echo "Student Address :".$this->address."<br>";
+    echo "Student Contact Number :".$this->contact_no."<br>";
+    echo "Mark 1 :".$this->mark_1."<br>";
+    echo "Mark 2 :".$this->mark_2."<br>";
+    echo "Mark 3 :".$this->mark_3."<br>";
+    echo "Total Marks :".$this->total."<br>";
+    echo "Average :".$this->average."<br>";
+    echo "Grade :".$this->grade."<br>";
+    echo "Result :".$this->result."<br>";
+
+
+}
+
+}
+
+$st = new Student("Roshan","08-04-2002","Male","Coimbatore",948620,101,98,84,93);
+$st->accept();
+$st->display();
 ?>
