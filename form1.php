@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $dateerror = "Date is required";
         $valid = false;
     } 
-    elseif(date("m/d/Y") $_POST["date"]){
+    elseif(date("m/d/Y") = $_POST["date"]){
         $dateerror = "Date should not be current date";
         $valid = false;
     }
