@@ -1,8 +1,8 @@
 <!-- 1st Q -->
-<?php
+ <?php
 $num = [];
 
-for ($i = 1; $i <= 10; $i++) {
+for ($i = 1; $i <= 3; $i++) {
     array_push($num, rand(10, 100));
 }
 print_r($num);
@@ -16,31 +16,64 @@ function check_num(array $arr)
             }
         }
         for ($i = 0; $i < count($arr); $i++) {
+            $stat=0;
             for ($j = 2; $j < $arr[$i]; $j++) {
                 if ($arr[$i] % $j == 0) {
-                    throw new Exception("The number in a array is prime number");
+                    $stat++; 
+                    break;    
+                     
+                }
+            }
+            
+            if ($stat == 1){
+                for ($k = 0; $k < count($arr); $k++) {
+                    $val = pow($arr[$i], 2) ;
+                 }
+                
 
                 }
-
+                else{
+                throw new Exception("The number in a array is prime number");
+                }
             }
+            echo "The square value of elements in an array : " .$val ."<br>";
         }
-        ;
-        for ($k = 0; $k < count($arr); $k++) {
-            echo "The square value of elements in an array : " . pow($arr[$i], 2) .
-                "<br>";
-        }
-
-    } catch (Exception $e) {
+     catch (Exception $e) {
         echo "<br>The error is : " . $e->getMessage() . "<br>";
     } finally {
-        echo "Exception is Handled";
+        echo "Exception is Handled"."<br>";
     }
 }
 check_num($num);
-?>
+?> 
 
 <!-- 2nd Q -->
 <?php
+class Address
+{
+    public $door_no;
+    public $street_name;
+    public $city;
+    public $pin_code;
+
+    function __construct( $d_no, $street, $city, $pin)
+    {
+
+        $this->door_no = $d_no;
+        $this->street_name = $street;
+        $this->city = $city;
+        $this->pin_code = $pin;
+
+    }
+    function display(){
+    echo "PERSON ADDRESS : <br>";
+    echo "Door_No : " . $this->door_no . "<br>";
+    echo "Street_Name : " . $this->street_name . "<br>";
+    echo "City : " . $this->city . "<br>";
+    echo "Pin_code : " . $this->pin_code . "<br>";
+    echo "<br><br><br><br><br>";
+    }
+}
 class Person
 {
     public $person_name;
@@ -49,37 +82,15 @@ class Person
 
     public $person_mobile;
 
-    function __construct($name, $dob, $gender, $address, $mobile)
+    public $addr;
+    function __construct($name, $dob, $gender,  $mobile,$d_no, $street, $city, $pin)
     {
-
+        $this->addr = new Address($d_no, $street, $city, $pin);
         $this->person_name = $name;
         $this->person_dob = $dob;
         $this->person_gender = $gender;
         $this->person_mobile = $mobile;
-    }
-
-
-}
-
-class Address extends Person
-{
-    public $door_no;
-    public $street_name;
-    public $city;
-    public $pin_code;
-
-    function __construct($name, $dob, $gender, $mobile, $d_no, $street, $city, $pin)
-    {
-
-        $this->person_name = $name;
-        $this->person_dob = $dob;
-        $this->person_gender = $gender;
-        $this->person_mobile = $mobile;
-        $this->door_no = $d_no;
-        $this->street_name = $street;
-        $this->city = $city;
-        $this->pin_code = $pin;
-
+    
     }
     function display()
     {
@@ -88,16 +99,14 @@ class Address extends Person
         echo "D.O.B : " . $this->person_dob . "<br>";
         echo "Gender : " . $this->person_gender . "<br>";
         echo "Mobile : " . $this->person_mobile . "<br>";
-        echo "PERSON ADDRESS : <br>";
-        echo "Door_No : " . $this->door_no . "<br>";
-        echo "Street_Name : " . $this->street_name . "<br>";
-        echo "City : " . $this->city . "<br>";
-        echo "Pin_code : " . $this->pin_code . "<br>";
-        echo "<br><br><br><br><br>";
+       echo $this->addr->display();
     }
+
 }
 
-$addr = new Address("Sharon D", "08-04-2002", "Male", "9597303632", "9/69G", "Conway Street", "New York", 641008);
+
+
+$addr = new Person("Sharon D", "08-04-2002", "Male", "9597303632", "9/69G", "Conway Street", "New York", 641008);
 $addr->display();
 ?>
 <!-- 3rd Q -->
@@ -152,39 +161,44 @@ class Static_Check
     public static $ABOVE_AGE;
     public $name;
     public $age;
-    function __construct()
+    function __construct($name,$age)
     {
-
+        $this->name = $name; 
+        $this->age = $age;
+        $this->check();
     }
 
     function __destruct()
     {
+        echo "Destructor <br>";
     }
 
-   public static function check($name,$age)
+   public function check()
     {
-        if ($age > 50) {
+        if ($this->age > 50) {
         
-            // echo "name : ".$name;
-            // echo "age : ".$age;
+         
             self::$ABOVE_AGE++;
-        } elseif ($age < 50) {
+        } else{
    
-            // echo "name : ".$name;
-            // echo "age : ".$age;
+          
             self::$BELOW_AGE++;
         }
     }
+    public static function showResult()
+{
+    echo "Age above 50 = " . self::$ABOVE_AGE . "<br>";
+    echo "Age below 50 = " . self::$BELOW_AGE . "<br>";
+}
 }
 
+$s1 = new Static_Check ("Seeli",23);
+$s2 = new Static_Check ("Sharon",21);
+$s3 = new Static_Check ("John",63);
+$s4 = new Static_Check ("David",59);
+$s5 = new Static_Check ("Ignacious",44);
 
-Static_Check::check("Sharon",22);
-Static_Check::check("Darshan",52);
-Static_Check::check("Harshan",62);
-Static_Check::check("Hemanth",72);
-Static_Check::check("Arun",25);
+Static_Check::showResult();
 
-echo "Above Age 50". "<br>" .Static_Check::$ABOVE_AGE. "<br>";
-echo "Below Age 50". "<br>" .Static_Check::$BELOW_AGE. "<br>";
 ?>
 

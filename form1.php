@@ -39,7 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (empty($_POST["date"])) {
         $dateerror = "Date is required";
         $valid = false;
-    } else {
+    } 
+    elseif(date("m/d/Y") $_POST["date"]){
+        $dateerror = "Date should not be current date";
+        $valid = false;
+    }
+    else {
         $dob = test_input($_POST["date"]);
     }
     if (empty($_POST["gender"])) {
