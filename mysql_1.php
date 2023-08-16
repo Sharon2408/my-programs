@@ -462,3 +462,57 @@
     echo "Error: " . $e->getMessage();
   }
   $conn = null;
+
+  create database sha;
+use  sha;
+-- Create Product table
+CREATE TABLE Product (
+    ProductCode INT AUTO_INCREMENT PRIMARY KEY,
+    ProductName VARCHAR(255),
+    ProductType VARCHAR(50),
+    Description TEXT,
+    Quantity INT,
+    Price DECIMAL(10, 2),
+    Image VARCHAR(255)
+);
+
+-- Create User table
+CREATE TABLE User (
+    UID INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(50) UNIQUE,
+    Password VARCHAR(255),
+    UserType VARCHAR(20)
+);
+
+INSERT INTO Product (ProductName, ProductType, Description, Quantity, Price, Image)
+VALUES
+    ('Red Bicycle', 'Sports & Outdoors', 'High-quality red bicycle suitable for all ages.', 20, 249.99, NULL),
+    ('Wireless Headphones', 'Electronics', 'Bluetooth wireless headphones with noise cancellation.', 100, 129.99, NULL),
+    ('Blue Jeans', 'Apparel', 'Classic blue jeans with a comfortable fit.', 150, 39.99, NULL),
+    ('Coffee Maker', 'Appliances', 'Programmable coffee maker for brewing your favorite beverages.', 50, 79.99, NULL),
+    ('Smartphone Case', 'Accessories', 'Protective case for popular smartphone models.', 200, 19.99, NULL),
+    ('Running Shoes', 'Footwear', 'Lightweight running shoes designed for performance.', 75, 89.99, NULL),
+    ('Leather Wallet', 'Accessories', 'Genuine leather wallet with multiple card slots.', 80, 29.99, NULL),
+    ('Digital Camera', 'Electronics', '12MP digital camera with advanced features.', 30, 199.99, NULL),
+    ('Wooden Desk', 'Furniture', 'Elegant wooden desk for home office or study.', 25, 149.99, NULL),
+    ('Fitness Tracker', 'Health & Fitness', 'Track your daily activities with this fitness tracker.', 120, 49.99, NULL);
+
+select * from Product;
+
+INSERT INTO User (Username, Password, UserType)
+VALUES
+    ('admin', 'adminpassword', 'admin'),
+    ('johndoe', 'securepass123', 'user'),
+    ('janedoe', 'password456', 'user'),
+    ('mike.smith', 'mikespass789', 'user'),
+    ('emilyjones', 'emilysafe789', 'user'),
+    ('alexwilson', 'alexpass123', 'user'),
+    ('sarahbrown', 'sarahspassword', 'user'),
+    ('chriswilliams', 'securechrispass', 'user'),
+    ('laurasmith', 'laurapass456', 'user'),
+    ('davidmiller', 'david123pass', 'user');
+
+    
+    drop table user;
+    
+    select * from user;
