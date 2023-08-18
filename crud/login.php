@@ -1,39 +1,3 @@
-<?php
-$emailerror = $passworderror = $email = $pass = '';
-$valid = true;
-
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
- 
-    if (empty($_POST["email"])) {
-        $emailerror = "Email is required";
-        $valid = false;
-    } else {
-        $email = test_input1($_POST["email"]);
-
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailerror = "Invalid email format";
-            $valid = false;
-        }
-    }
-    if (empty($_POST["pass"])) {
-        $passworderror = "Password is required";
-    } else {
-        $pass = test_input1($_POST["pass"]);
-        if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{6,}$/", $pass)) {
-            $passworderror = "Password must be 6 char long,1 number,symbol,Uppercase";
-            $valid = false;
-        }
-    }
-}
-function test_input1($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +11,47 @@ function test_input1($data)
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
+
+<?php
+$emailerror = $passworderror = $email = $pass = '';
+$valid = true;
+include("connect.php");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ 
+    $users = mysqli_query($conn,"SELECT * FROM User;");
+  while($val = mysqli_fetch_assoc($users)){
+    if ($val['Username'] == $_POST["username"] && $val['Password'] == $_POST["pass"] && $val['UserType'] == 'admin' ) {
+        header("Location: crud_product.php");
+      echo  "<script> Swal.fire(
+            'Good job!',
+            'You clicked the button!',
+            'success'
+        )</script>";
+        exit();
+    }
+    elseif($val['Username'] == $_POST["username"] && $val['Password'] == $_POST["pass"] && $val['UserType'] == 'user' ){
+
+        header("Location: mysql_1.php");
+        exit();
+    }
+    else {
+       echo "<script> Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Check your username or password!',
+          })</script>";       
+    }
+   
+  }
+   
+  mysqli_close($conn);
+}
+
+ ?>
+
 
 <body>
     <div class="container">
@@ -58,7 +62,7 @@ function test_input1($data)
                         <h1>Login</h1>
                         <div class="content">
                             <div class="input-field">
-                                <input type="email" name="email" value="<?php echo $email; ?>" placeholder="Email">
+                                <input type="text" name="username" value="<?php echo $email; ?>" placeholder="Username">
                                 <small name="emailerror">
                                     <?php echo $emailerror; ?>
                                 </small>
@@ -82,3 +86,39 @@ function test_input1($data)
 </body>
 
 </html>
+
+
+
+
+<?php
+// if ($_SERVER['REQUEST_METHOD'] == "POST") {
+ 
+ //     if (empty($_POST["email"])) {
+ //         $emailerror = "Email is required";
+ //         $valid = false;
+ //     } else {
+ //         $email = test_input1($_POST["email"]);
+ 
+ //         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+ //             $emailerror = "Invalid email format";
+ //             $valid = false;
+ //         }
+ //     }
+ //     if (empty($_POST["pass"])) {
+ //         $passworderror = "Password is required";
+ //     } else {
+ //         $pass = test_input1($_POST["pass"]);
+ //         if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{6,}$/", $pass)) {
+ //             $passworderror = "Password must be 6 char long,1 number,symbol,Uppercase";
+ //             $valid = false;
+ //         }
+ //     }
+ // }
+ // function test_input1($data)
+ // {
+ //     $data = trim($data);
+ //     $data = stripslashes($data);
+ //     $data = htmlspecialchars($data);
+ //     return $data;
+ // }
+ ?>

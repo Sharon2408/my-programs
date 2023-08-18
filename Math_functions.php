@@ -19,4 +19,6 @@ echo is_finite(2) . "<br><br><br>";
 echo "log10()". "<br>";
 echo log10(10) . "<br><br><br>";
 
+echo rand(10,100);
+
 ?>
