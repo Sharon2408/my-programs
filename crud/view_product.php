@@ -33,24 +33,19 @@
         <div class='card-body'>
           <h5 class='card-title'>" . $val["ProductType"] . "</h5>
           <p class='card-text'>" . $val["ProductName"] . "</p>
+          <button type='button'  class='btn btn-primary' data-bs-target='#collapseExample' data-bs-toggle='collapse' aria-expanded='false' aria-controls='collapseExample'>View Details</button>
+          <div class='collapse' id='collapseExample'>
           <p class='card-text'>&#8377; " . $val["Price"] . "</p>
-          <a href='#' data-bs-target='#collapseExample' class='btn btn-primary' data-toggle='collapse'>View Details</a>
-        </div>
+          <p class='card-text'> " . $val["Description"] . "</p>
+          <p class='card-text'>Available Quantity :" . $val["Quantity"] . "</p>
+          </div>
+          </div>
       </div>
-      <div class='collapse' id='collapseExample'>
-  <div class='card card-body'>
-  <p class='card-text'>Available Quantity :" . $val["Quantity"] . "</p>
-  </div>
-</div>
-      </div>";
-
-
+      </div>
+      ";
     }
-
-    echo " 
-</div>
-</div>";
-    ?>
+echo " </div></div>";
+ ?>
 
 
 </body>

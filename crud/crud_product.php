@@ -17,19 +17,19 @@
     <?php
     include("connect.php");
     $content = mysqli_query($conn, "SELECT * FROM Product;");
-    $name= $_GET['p_name'];
-    $type= $_GET['p_type'];
-    $desc= $_GET['p_desc'];
-    $quantity= $_GET['p_quantity'];
-    $price= $_GET['p_price'];
-    $image= $_GET['p_image'];
+    // $name= $_GET['p_name'];
+    // $type= $_GET['p_type'];
+    // $desc= $_GET['p_desc'];
+    // $quantity= $_GET['p_quantity'];
+    // $price= $_GET['p_price'];
+    //  $image= $_GET['p_image'];
     # Insert into the database
-    $query = "INSERT INTO userdata(name,email) VALUES ('$name','$email')";
-    if (mysqli_query($conn, $query)) {
-        echo "New record created successfully !";
-    } else {
-         echo "Error inserting record: " . mysqli_error($conn);
-    }
+    // $query = "INSERT INTO userdata(name,email) VALUES ('$name','$email')";
+    // if (mysqli_query($conn, $query)) {
+    //     echo "New record created successfully !";
+    // } else {
+    //      echo "Error inserting record: " . mysqli_error($conn);
+    // }
     echo "
     <div class='container'>
     <button class='btn btn-outline-primary' data-bs-toggle='modal' data-bs-target='#exampleModal' >CREATE</button>

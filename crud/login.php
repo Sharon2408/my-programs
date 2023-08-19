@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     elseif($val['Username'] == $_POST["username"] && $val['Password'] == $_POST["pass"] && $val['UserType'] == 'user' ){
 
-        header("Location: mysql_1.php");
+        header("Location: view_product.php");
         exit();
     }
     else {
